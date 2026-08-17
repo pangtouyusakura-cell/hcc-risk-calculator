@@ -362,9 +362,7 @@ function predict(values) {
 function calc() {
   if (!validate()) return;
   const values = FIELD_DEFS.map(f => {
-    let v = parseFloat(inputs[f.key].value);
-    if (MODEL.log_features[FIELD_DEFS.indexOf(f)]) v = Math.log(Math.max(v, 1e-6));
-    return v;
+    return parseFloat(inputs[f.key].value);
   });
   const p = predict(values);
   const thr = MODEL.threshold;
